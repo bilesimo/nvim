@@ -10,6 +10,8 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
+vim.opt.clipboard = 'unnamedplus'
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -29,3 +31,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
 vim.g.maplaeder = " "
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.winborder = 'rounded'

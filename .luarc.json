@@ -1,0 +1,17 @@
+{
+    "workspace.library": [
+        "/Users/bilesimo/.config/nvim",
+        "/Users/bilesimo/.local/share/nvim/site",
+        "/Users/bilesimo/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/bilesimo/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/bilesimo/.local/share/nvim/lazy/mason.nvim",
+        "/Users/bilesimo/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/Users/bilesimo/.local/share/nvim/lazy/moonfly",
+        "/opt/homebrew/Cellar/neovim/0.11.5_1/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/0.11.5_1/lib/nvim",
+        "/Users/bilesimo/.local/state/nvim/lazy/readme",
+        "/Users/bilesimo/.local/share/nvim/lazy/mason-lspconfig.nvim/after",
+        "/Users/bilesimo/.local/share/nvim/lazy/moonfly/after",
+        "${3rd}/luassert/library"
+    ]
+}

@@ -1,6 +1,5 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  lazy = false,
   build = ':TSUpdate',
   config = function()
 	 require('nvim-treesitter').install {
@@ -12,7 +11,7 @@ return {
 		  'jsdoc',
 		  'bash',
 		  'vimdoc',
-          } 
+          }
 	  require('nvim-treesitter').setup {
 		  indent = {
 			  enable = true,

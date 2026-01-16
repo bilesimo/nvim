@@ -10,14 +10,10 @@ return {
             }
         })
         require('mini.bracketed').setup()
-        require('mini.icons').setup()
-        require('mini.tabline').setup()
         require('mini.statusline').setup()
-        require('mini.notify').setup()
-        require('mini.notify').setup()
         require('mini.indentscope').setup()
         require('mini.animate').setup()
         require('mini.cmdline').setup() 
-        require('mini.starter').setup()
+        require('mini.comment').setup()
     end
 }
