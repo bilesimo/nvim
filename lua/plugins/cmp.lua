@@ -1,48 +1,42 @@
 return {
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-    },
-    opts = function()
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
+    {
+        "saghen/blink.cmp",
+        version = "1.*",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            { "L3MON4D3/LuaSnip", version = "v2.*" },
+        },
+        opts = {
+            -- Use LuaSnip as the snippet engine
+            snippets = { preset = "luasnip" }, -- :contentReference[oaicite:5]{index=5}
 
-      return {
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+            }, -- :contentReference[oaicite:6]{index=6}
+
+            completion = {
+                documentation = { auto_show = false },
+                -- closer to nvim-cmp behavior (no auto-insert while selecting)
+                list = { selection = { auto_insert = false } },
+            },
+
+            keymap = {
+                preset = "enter",
+
+                -- like cmp.confirm({ select = true })
+                ["<CR>"] = { "select_and_accept", "fallback" },
+
+                -- like your cmp mapping: next/prev if menu, else snippet jump, else fallback
+                ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+                -- you already map <C-k> to vim.lsp.buf.signature_help in LspAttach
+                ["<C-k>"] = false,
+            }, -- keymap commands + disabling keys :contentReference[oaicite:7]{index=7}
+
+            fuzzy = { implementation = "prefer_rust_with_warning" },
+            appearance = { nerd_font_variant = "mono" },
         },
-        mapping = cmp.mapping.preset.insert({
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-        }),
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        },
-      }
-    end,
-  },
+        opts_extend = { "sources.default" },
+    },
 }
